@@ -29,7 +29,7 @@ public:
 	Menu();
 	~Menu();
 private:
-	int SetMenu(string *NameOfDish, string *Ingredients, double *Count);
+	int SetMenu(string *NameOfDish, string *Ingredients, double *Price);
 };
 
 class Tables: public RestouranMainClass
@@ -56,3 +56,34 @@ public:
 	int SetAboutUs(string AllInformation, string Reviews);
 };
 
+class Opening : public RestouranMainClass
+{
+public:
+	Opening();
+	~Opening();
+	int SetOpening(string NameOfOpening, string Requirement, int Age, int ExpOfWork);
+};
+
+class Events : public RestouranMainClass
+{
+public:
+	Events();
+	~Events();
+	int SetEvents(Date, string Event);
+};
+
+class Order :public RestouranMainClass
+{
+public:
+	Order();
+	~Order();
+	int SetOrder(Date, int NumberOfTables, string NameOfCusromer)
+};
+
+class Basket :public RestouranMainClass
+{
+public:
+	Basket();
+	~Basket();
+	int SetBasket(string NameOfDish, int Price, string Address)
+};
