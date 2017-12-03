@@ -1,89 +1,118 @@
-#pragma once
-#include <iostream>
 #include <string>
-
 using namespace std;
-
-/*Author: Semerenko CS-16
-				Our Main class
-RestouranMainClass(); - default constructor
-~RestouranMainClass(); - default destructor*/
-class RestouranMainClass
-{
+class Table {
+	int CountTableAll, CountTableFree, CountTableBooking;
 public:
-	int SetRestouranMainClass(string, double, int, int, int, string, string, int, string, string, &, string);
-	RestouranMainClass();
-	~RestouranMainClass();
-private:
+	Table();
+	~Table();
+	int TableFree(int, int);
+	void SetTable(int, int);
+};
+
+class Personal
+{
+	int CountAllPersonal;
+	string NamePersonal;
+public:
+	Personal();
+	void SetPersonal(int,string);
+	~Personal();
+};
+
+class Drinks
+{
+protected:
+	char *NameOfDrink;
+	int *CountOfDrink;
+public:
+	Drinks();
+	void SetDrinks(char *, int*);
+	~Drinks();
+};
+
+class FirstDishes
+{
+protected:
+	char *NameOfFirstDish;
+	double *CountOfFirstDish;
+public:
+	FirstDishes();
+	FirstDishes(char *, double *);
+	void SetFirstDishes(char *, double*);
+	~FirstDishes();
+};
+
+class SecondDishes
+{
+protected:
+	char *NameOfSecondDish;
+	double *CountOfSecondDish;
+public:
+	SecondDishes();
+	SecondDishes(char *, double *);
+	void SetSecondDishes(char *, double*);
+	~SecondDishes();
 
 };
 
-/*Author: Klymenko CS-16
-				Inherit class with menu
-Menu - default constructor
-~Menu - default destructor
-int SetMenu() - Setter. He's returned checked values*/
-class Menu :public RestouranMainClass
+class Menu : public Drinks, public FirstDishes, public SecondDishes
 {
 public:
 	Menu();
+	void SetMenu();
+	void PrintMenu();
+	int MakeAnOrder();
+	void ReceiveAnOrder(int, int, int);
 	~Menu();
-private:
-	int SetMenu(string *NameOfDish, string *Ingredients, double *Price);
+
 };
 
-class Tables: public RestouranMainClass
+class Vacancy
 {
+	char *NameOfVacancy, *Demand;
 public:
-	Tables();
-	~Tables();
-	int SetTables(int AllTables, int FreeTables, int OrderTables);
+	Vacancy();
+	Vacancy(char *, char *);
+	void SetVacancy(char *, char *);
+	~Vacancy();
 };
 
-class Staff : public RestouranMainClass
+class Stocks
 {
+	char *Data, *Stock;
 public:
-	Staff();
-	~Staff();
-	int SetStaff(string Post, string Name, int Expirience);
+	Stocks();
+	Stocks(char *, char *);
+	void SetStock(char *, char *);
+	~Stocks();
 };
 
-class AboutUs : public RestouranMainClass
+class Information : public Menu, public Table, public Personal, public Stocks, public Vacancy
 {
+protected:
+	string AboutUs;
 public:
-	AboutUs();
-	~AboutUs();
-	int SetAboutUs(string AllInformation, string Reviews);
+	Information();
+	Information(string);
+	void  SetInformation(string);
+	~Information();
 };
 
-class Opening : public RestouranMainClass
+class Tab : private Menu, private Stocks
 {
 public:
-	Opening();
-	~Opening();
-	int SetOpening(string NameOfOpening, string Requirement, int Age, int ExpOfWork);
+	Tab();
+	void SetTab();
+	void PrintTab();
+	~Tab();
 };
 
-class Events : public RestouranMainClass
+class Busket : private Table, private Tab
 {
+	string Day;
 public:
-	Events();
-	~Events();
-	int SetEvents(Date, string Event);
+	Busket();
+	Busket();
+	~Busket();
 };
 
-class Order :public RestouranMainClass
-{
-public:
-	Order();
-	~Order();
-	int SetOrder(Date, int NumberOfTables, string NameOfCusromer)
-};
-
-class Basket :public RestouranMainClass
-{
-public:
-	Basket();
-	~Basket();
-	int SetBasket(string NameOfDish, int Price, string Address)
-};
