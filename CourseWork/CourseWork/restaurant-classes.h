@@ -4,7 +4,7 @@ class Table {
 	int CountTableAll, CountTableFree, CountTableBooking;
 public:
 	Table();
-	~Table();
+	//~Table();
 	int TableFree(int, int);
 	void SetTable(int, int);
 };
@@ -16,43 +16,41 @@ class Personal
 public:
 	Personal();
 	void SetPersonal(int,string);
-	~Personal();
+	//~Personal();
 };
 
 class Drinks
 {
 protected:
-	char *NameOfDrink;
+	string NameOfDrink;
 	int *CountOfDrink;
 public:
 	Drinks();
-	void SetDrinks(char *, int*);
-	~Drinks();
+	void SetDrinks(string , int*);
+	//~Drinks();
 };
 
 class FirstDishes
 {
 protected:
-	char *NameOfFirstDish;
-	double *CountOfFirstDish;
+	string NameOfFirstDish;
+	double CountOfFirstDish[10];
 public:
 	FirstDishes();
-	FirstDishes(char *, double *);
-	void SetFirstDishes(char *, double*);
-	~FirstDishes();
+	FirstDishes(string, double);
+	void SetFirstDishes(string, double[]);
+	//~FirstDishes();
 };
 
 class SecondDishes
 {
 protected:
-	char *NameOfSecondDish;
+	string NameOfSecondDish;
 	double *CountOfSecondDish;
 public:
 	SecondDishes();
-	SecondDishes(char *, double *);
-	void SetSecondDishes(char *, double*);
-	~SecondDishes();
-
+	void SetSecondDishes();
+	//~SecondDishes();
 };
 
 class Menu : public Drinks, public FirstDishes, public SecondDishes
@@ -63,28 +61,28 @@ public:
 	void PrintMenu();
 	int MakeAnOrder();
 	void ReceiveAnOrder(int, int, int);
-	~Menu();
+	//~Menu();
 
 };
 
 class Vacancy
 {
-	char *NameOfVacancy, *Demand;
+	string NameOfVacancy, Demand;
 public:
 	Vacancy();
-	Vacancy(char *, char *);
-	void SetVacancy(char *, char *);
-	~Vacancy();
+	Vacancy(string , string );
+	void SetVacancy(string , string );
+	//~Vacancy();
 };
 
 class Stocks
 {
-	char *Data, *Stock;
+	string Data, Stock;
 public:
 	Stocks();
-	Stocks(char *, char *);
-	void SetStock(char *, char *);
-	~Stocks();
+	Stocks(string , string );
+	void SetStock(string , string );
+	//~Stocks();
 };
 
 class Information : public Menu, public Table, public Personal, public Stocks, public Vacancy
@@ -95,10 +93,10 @@ public:
 	Information();
 	Information(string);
 	void  SetInformation(string);
-	~Information();
+	//~Information();
 };
 
-class Tab : private Menu, private Stocks
+/*class Tab : private Busket, private Stocks
 {
 public:
 	Tab();
@@ -107,12 +105,22 @@ public:
 	~Tab();
 };
 
-class Busket : private Table, private Tab
+/*class Busket : private Table, private Menu
 {
 	string Day;
 public:
 	Busket();
 	Busket();
+	void Choise();
 	~Busket();
+};*/
+
+class MainClass {
+protected:
+	string FD, SD, Dr;
+	double CFD, CSD, CDr;
+public:
+	void YourChoise(int);
 };
+
 
